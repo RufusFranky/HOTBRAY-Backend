@@ -21,12 +21,12 @@ app.use(
 
 app.use(express.json());
 
-// ✅ Test route
+// Test route
 app.get("/", (req, res) => {
   res.send("Backend is running...");
 });
 
-// ✅ Get all products
+// Get all products
 app.get("/products", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM products");
@@ -37,7 +37,7 @@ app.get("/products", async (req, res) => {
   }
 });
 
-// ✅ Get single product by ID
+// Get single product by ID
 app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -52,7 +52,7 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
-// ✅ Debug route to test DB connection
+// Debug route to test DB connection
 app.get("/test-db", async (req, res) => {
   try {
     const result = await pool.query("SELECT NOW()");
@@ -63,7 +63,7 @@ app.get("/test-db", async (req, res) => {
   }
 });
 
-// ✅ Listen on Render’s dynamic port
+// Render’s dynamic port
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running and listening on port ${PORT}`);

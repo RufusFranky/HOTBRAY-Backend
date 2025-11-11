@@ -7,9 +7,15 @@ dotenv.config();
 
 const app = express();
 
+// Enable CORS (so both localhost and Vercel frontend work)
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "*",
+    origin: [
+      "http://localhost:3000",                     // local dev
+      "https://hotbray-frontend.vercel.app",       // production frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 
@@ -41,12 +47,11 @@ app.get("/products/:id", async (req, res) => {
     }
     res.json(result.rows[0]);
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching single product:", error);
     res.status(500).json({ error: "Database error" });
   }
 });
 
-const PORT = process.env.PORT || 4000;
 // ✅ Debug route to test DB connection
 app.get("/test-db", async (req, res) => {
   try {
@@ -57,4 +62,9 @@ app.get("/test-db", async (req, res) => {
     res.status(500).json({ error: "Failed to connect to database", details: error.message });
   }
 });
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+// ✅ Listen on Render’s dynamic port
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running and listening on port ${PORT}`);
+});

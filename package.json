@@ -16,6 +16,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "meilisearch": "^0.54.0",
+    "nodemailer": "^7.0.11",
     "pg": "^8.16.3",
     "uuid": "^13.0.0"
   }

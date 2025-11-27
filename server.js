@@ -6,6 +6,7 @@ import fastOrderRoutes from "./fastOrderRoutes.js";
 import quotesRoutes from "./quotesRoutes.js";
 import { initSearchSettings} from "./meiliClient.js";
 import searchRoutes from "./searchRoutes.js";
+import contactRoutes from "./contactRoutes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use("/fast-order", fastOrderRoutes);
 app.use("/quotes", quotesRoutes);
 app.use("/search", searchRoutes);
+app.use("/contact", contactRoutes);
 
 // Test route
 app.get("/", (req, res) => {

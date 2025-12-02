@@ -16,10 +16,10 @@ export async function initSearchSettings() {
     // No filters for now
     filterableAttributes: [],
     synonyms: {
-      tire: ["tyre", "tires", "tyres"],
-      tyre: ["tire", "tires", "tyres"],
-      tires: ["tire", "tyre", "tyres"],
-      tyres: ["tire", "tyre", "tires"],
+      battery: ["batery", "batteries", "batary"],
+      brake: ["break", "brakes", "pad"],
+      engine: ["oils", "oil", "engine oils"],
+      Wiper: ["viper", "wipers", "waipar"],
     },
   });
 }
